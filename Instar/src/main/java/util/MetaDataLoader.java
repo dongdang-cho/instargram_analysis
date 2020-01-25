@@ -12,6 +12,8 @@ public class MetaDataLoader {
 	private static Properties urlProfile = new Properties();
 	private static Properties tagProfile = new Properties();
 	private static Properties accountProfile = new Properties();
+	private static Properties dbInfoProfile = new Properties();
+	private static Properties dbCmdProfile = new Properties();
 	static {
 		try {
 			pathProFile.load(new FileInputStream("path.properties"));
@@ -19,6 +21,10 @@ public class MetaDataLoader {
 			urlProfile.load(new FileInputStream("url.properties")); 
 			tagProfile.load(new FileInputStream("tag.properties"));
 			accountProfile.load(new FileInputStream("account.properties"));
+			dbInfoProfile.load(new FileInputStream("dbinfo.properties"));
+			dbCmdProfile.load(new FileInputStream("dbcmd.properties"));
+			
+			DBConnManager.dbLoading(dbInfoProfile);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,8 +64,10 @@ public class MetaDataLoader {
 	public static Properties getIdProfile() {
 		return accountProfile;
 	}
-	
-	
+	public static Properties getDbCmdProfile() {
+		return dbCmdProfile;
+	}
+
 	
 	
 	
